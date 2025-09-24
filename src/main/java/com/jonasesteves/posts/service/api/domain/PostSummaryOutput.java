@@ -5,15 +5,15 @@ import java.util.Objects;
 public class PostSummaryOutput {
     private String id;
     private String title;
-    private String body;
+    private String summary;
     private String author;
 
     private PostSummaryOutput() {}
 
-    public PostSummaryOutput(String id, String title, String body, String author) {
+    public PostSummaryOutput(String id, String title, String summary, String author) {
         this.id = id;
         this.title = title;
-        this.body = body;
+        this.summary = summary;
         this.author = author;
     }
 
@@ -33,12 +33,12 @@ public class PostSummaryOutput {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getSummary() {
+        return summary;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public String getAuthor() {
@@ -53,12 +53,12 @@ public class PostSummaryOutput {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         PostSummaryOutput that = (PostSummaryOutput) o;
-        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(body, that.body) && Objects.equals(author, that.author);
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(summary, that.summary) && Objects.equals(author, that.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, body, author);
+        return Objects.hash(id, title, summary, author);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class PostSummaryOutput {
         return "PostSummaryOutput{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
+                ", summary='" + summary + '\'' +
                 ", author='" + author + '\'' +
                 '}';
     }
@@ -78,7 +78,7 @@ public class PostSummaryOutput {
     public static class Builder {
         private String id;
         private String title;
-        private String body;
+        private String summary;
         private String author;
 
         public Builder id(String id) {
@@ -91,8 +91,8 @@ public class PostSummaryOutput {
             return this;
         }
 
-        public Builder body(String body) {
-            this.body = body;
+        public Builder summary(String summary) {
+            this.summary = summary;
             return this;
         }
 
@@ -102,7 +102,7 @@ public class PostSummaryOutput {
         }
 
         public PostSummaryOutput build() {
-            return new PostSummaryOutput(id, title, body, author);
+            return new PostSummaryOutput(id, title, summary, author);
         }
 
         @Override
@@ -110,7 +110,7 @@ public class PostSummaryOutput {
             return "PostSummaryOutput.Builder{" +
                     "id='" + id + '\'' +
                     ", title='" + title + '\'' +
-                    ", body='" + body + '\'' +
+                    ", summary='" + summary + '\'' +
                     ", author='" + author + '\'' +
                     '}';
         }

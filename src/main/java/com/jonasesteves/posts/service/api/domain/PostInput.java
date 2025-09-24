@@ -1,18 +1,19 @@
 package com.jonasesteves.posts.service.api.domain;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
 public class PostInput {
 
-    @NotNull
+    @NotBlank
     private String title;
 
-    @NotNull
+    @NotBlank
     private String body;
 
-    @NotNull
+    @NotBlank
     private String author;
 
     public String getTitle() {

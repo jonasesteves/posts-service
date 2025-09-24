@@ -48,12 +48,7 @@ public class PostController {
 
         rabbitTemplate.convertAndSend(FANOUT_EXCHANGE_NAME, "", postData);
 
-        return PostSummaryOutput.builder()
-                .id(post.getId().toString())
-                .title(post.getTitle())
-                .body(post.getBody())
-                .author(post.getAuthor())
-                .build();
+        return convertToSummaryOutput(post);
     }
 
     @GetMapping("{id}")
@@ -63,9 +58,9 @@ public class PostController {
     }
 
     @GetMapping
-    public Page<PostOutput> findAll(Pageable  pageable) {
+    public Page<PostSummaryOutput> findAll(Pageable  pageable) {
         Page<Post> posts = postRepository.findAll(pageable);
-        return posts.map(PostController::convertToModel);
+        return posts.map(PostController::convertToSummaryOutput);
     }
 
     private static PostOutput convertToModel(Post post) {
@@ -76,6 +71,15 @@ public class PostController {
                 .author(post.getAuthor())
                 .wordCount(post.getWordCount())
                 .calculatedValue(post.getCalculatedValue())
+                .build();
+    }
+
+    private static PostSummaryOutput convertToSummaryOutput(Post post) {
+        return PostSummaryOutput.builder()
+                .id(post.getId().toString())
+                .title(post.getTitle())
+                .summary(post.getBody())
+                .author(post.getAuthor())
                 .build();
     }
 }
